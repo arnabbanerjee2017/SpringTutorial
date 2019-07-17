@@ -24,8 +24,16 @@ public class SpringTutorialApplication {
 		 * AOP Demo.
 		 * 
 		 */
+		long startTime = System.currentTimeMillis();
 		AOPTest aopTest = ctx.getBean(AOPTest.class);
 		aopTest.print();
+		aopTest.printMe();
+		aopTest.printMeAgain();
+		aopTest.printAnotherMe();
+		aopTest.printAnotherMeAgain();
+		aopTest.printTotallyNewMe();
+		long timeTaken = System.currentTimeMillis() - startTime;
+		System.out.println("Time taken: " + timeTaken);
 	}
 
 }
