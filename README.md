@@ -44,4 +44,36 @@ Few things about AOP -
 		Answer: @Before("execution(* addAccount(..))")
 		-> Match any method in our DAO package - "com.somebank.retail.dao".
 		Answer: @Before("execution(* com.somebank.retail.dao.*.*(..))")
+
+3. How to control the order of Advices being applied?
+	MyLoggingDemoAspect - 3 Advices in this Aspect.
+	-> beforeAddAccountAdvice.
+	-> performApiAnalyticsAdvice.
+	-> logToCloudAdvice.
+	The order is actually undefined. Spring will pick one-by-one randomly and will execute.
+	To control order -
+		-> Refactor: Place Advices in separate Aspects.
+		-> Control order on Aspects using the @Order annotation - @Order(1) means first.
+
+
+4. JoinPoints
+	-> When we are in an Aspect (i.e., for logging), how can we access method parameters?
+	-> Example - theAccountDAO.addAccount(myAccount, true); --> I want to log these parameters with AOP.
+	-> Development Process - 
+		-> Access and display Method Signature.
+			-> @Before("...")
+			   public void beforeAddAccountAdvice(JoinPoint joinPoint) {  // Here JoinPoint has the metadata about method call.
+			   		MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+			   		System.out.prinln("Method Signature: " + methodsSignature);
+			   }
+		-> Access and display Method Arguments.
+			-> @Before("...")
+			   public void beforeAddAccountAdvice(JoinPoint joinPoint) {
+			   		Object[] args = joinPoint.getArgs();
+			   		for(Object object: args) {
+			   			System.out.println("Argument: " + object);
+			   		}
+			   }
+	
+	
 	

@@ -1,5 +1,7 @@
 package com.arnab.spring;
 
+import java.util.Date;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -32,6 +34,8 @@ public class SpringTutorialApplication {
 		aopTest.printAnotherMe();
 		aopTest.printAnotherMeAgain();
 		aopTest.printTotallyNewMe();
+		aopTest.printTotallyNewMe("ARNAB");
+		aopTest.printTotallyNewMe("GOPAL", new Date());
 		long timeTaken = System.currentTimeMillis() - startTime;
 		System.out.println("Time taken: " + timeTaken);
 	}
