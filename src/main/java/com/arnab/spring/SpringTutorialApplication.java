@@ -16,7 +16,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import com.arnab.spring.aop.AOPTest;
-import com.arnab.spring.scope.SpringScopeDemo;
 
 @SpringBootApplication
 public class SpringTutorialApplication {
